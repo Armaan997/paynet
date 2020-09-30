@@ -221,7 +221,7 @@ public class TransferMoney extends javax.swing.JFrame {
             Timestamp ts=new Timestamp(System.currentTimeMillis());
             
             
-            db.DbConnect.s.executeUpdate("insert into history (mobile,transaction,date_time,mobile_to,cut_balance) values('"+mobile2+"','"+"transfer"+"','"+ts+"','"+mobile+"','"+amount+"')");
+            db.DbConnect.s.executeUpdate("insert into history (mobile,transaction,date_time,mobile_to,cut_balance) values('"+mobile2+"','"+"Money Transfer"+"','"+ts+"','"+mobile+"','"+amount+"')");
             JOptionPane.showMessageDialog(null, "Transfer Successfully !");
         new MainPage().setVisible(true);
         dispose();

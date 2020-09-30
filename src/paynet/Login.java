@@ -7,6 +7,8 @@
 package paynet;
 
 import java.sql.*;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 /**
  *
@@ -175,7 +177,12 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-         String uid=m.getText();
+        
+        String uid=m.getText();
+        Pattern pattern=Pattern.compile("^[7-9][0-9]{9}");
+        Matcher match=pattern.matcher(uid);
+        if(match.matches()){
+       
          
         String password=new String(p.getPassword());
       if(!uid.equals("") &&  !password.equals("")){
@@ -200,7 +207,9 @@ public class Login extends javax.swing.JFrame {
          else{
                 JOptionPane.showMessageDialog(null, "Plz Fill All Field");
                 }
-        
+        }else{
+            JOptionPane.showMessageDialog(null, "Invalid Mobile Number");
+        }
        
     }//GEN-LAST:event_jButton2ActionPerformed
 

@@ -5,6 +5,8 @@
  */
 package paynet;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -201,6 +203,16 @@ public class SignUp extends javax.swing.JFrame {
         String name=n.getText();
         String mobile=m.getText();
         String password=new String(p.getPassword());
+         
+  
+        Pattern pattern=Pattern.compile("^[7-9][0-9]{9}$");
+        Matcher match=pattern.matcher(mobile);
+        
+        
+        
+        
+            if(match.matches())
+                {
         double balance=1000;
         if(!name.equals("") && !mobile.equals("") && !password.equals("")){
            
@@ -220,6 +232,11 @@ public class SignUp extends javax.swing.JFrame {
         else{
                 JOptionPane.showMessageDialog(null, "Plz Fill All Field");
                 }
+        }else{
+                JOptionPane.showMessageDialog(null, "Invalid Mobile");
+                }
+            
+
         
     }//GEN-LAST:event_jButton3ActionPerformed
 
