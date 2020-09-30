@@ -187,7 +187,55 @@ public class TransferMoney extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
-       
+        try{
+            //Transfer money to this mobile
+         String mobile=m.getText(); 
+         //get Amount
+          int amount=Integer.parseInt(a.getText());
+          //Get Current mobile
+         
+          ResultSet rs= db.DbConnect.s.executeQuery("select * from temp ");
+            rs.next();
+            String mobile2=rs.getString("mobile");
+            
+            //Current Mobile Id
+            ResultSet r= db.DbConnect.s.executeQuery("select * from client_info where mobile="+mobile2);
+            r.next();
+            int balance=r.getInt("balance");
+            if(amount<=balance)
+            {
+            
+            balance -= amount;
+            db.DbConnect.s.executeUpdate("Update client_info set balance='"+balance+"' where mobile="+mobile2);
+            
+          ResultSet r2= db.DbConnect.s.executeQuery("select * from client_info where mobile="+mobile);
+            r2.next();
+            int balance2=r2.getInt("balance");
+            
+            balance2 += amount;
+            db.DbConnect.s.executeUpdate("Update client_info set balance='"+balance2+"'where mobile="+mobile);
+            
+            //Get Current time stamp 
+            
+            
+            Timestamp ts=new Timestamp(System.currentTimeMillis());
+            
+            
+            db.DbConnect.s.executeUpdate("insert into history (mobile,transaction,date_time,mobile_to,cut_balance) values('"+mobile2+"','"+"transfer"+"','"+ts+"','"+mobile+"','"+amount+"')");
+            JOptionPane.showMessageDialog(null, "Transfer Successfully !");
+        new MainPage().setVisible(true);
+        dispose();
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "There is no efficient Balance");
+            }
+          
+         
+            
+        }catch(Exception ex)
+        {
+            JOptionPane.showMessageDialog(null, ex);
+        }
         
     }//GEN-LAST:event_jButton2ActionPerformed
 
