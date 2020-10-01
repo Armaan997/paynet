@@ -5,6 +5,7 @@
  */
 package paynet;
 
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.regex.Matcher;
@@ -86,12 +87,22 @@ public class recharge extends javax.swing.JFrame {
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
         m.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                mKeyTyped(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Mobile No :");
 
         a.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        a.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                aKeyTyped(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(102, 153, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
@@ -262,6 +273,26 @@ public class recharge extends javax.swing.JFrame {
         new MainPage().setVisible(true);
         dispose();
     }//GEN-LAST:event_jMenu1MouseClicked
+
+    private void aKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aKeyTyped
+        // TODO add your handling code here:
+        
+        char amount=evt.getKeyChar();
+
+    if(!(Character.isDigit(amount) ||   amount==KeyEvent.VK_DELETE ))
+        evt.consume();
+       
+    }//GEN-LAST:event_aKeyTyped
+
+    private void mKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mKeyTyped
+        // TODO add your handling code here:
+        
+        char amount=evt.getKeyChar();
+
+    if(!(Character.isDigit(amount) ||   amount==KeyEvent.VK_DELETE ))
+        evt.consume();
+      
+    }//GEN-LAST:event_mKeyTyped
 
     /**
      * @param args the command line arguments

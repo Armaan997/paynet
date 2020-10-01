@@ -1,10 +1,13 @@
 
 package paynet;
 
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -44,6 +47,7 @@ public class AddAmount extends javax.swing.JFrame {
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu3 = new javax.swing.JMenu();
         jMenu4 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -100,6 +104,11 @@ public class AddAmount extends javax.swing.JFrame {
         jLabel3.setText("₹");
 
         a.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        a.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                aKeyTyped(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(102, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -152,7 +161,16 @@ public class AddAmount extends javax.swing.JFrame {
         });
         jMenuBar2.add(jMenu3);
 
-        jMenu4.setText("Need");
+        jMenu4.setText("Setting");
+
+        jMenuItem1.setText("Log out");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuItem1);
+
         jMenuBar2.add(jMenu4);
 
         setJMenuBar(jMenuBar2);
@@ -179,6 +197,9 @@ public class AddAmount extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
+            Pattern pattern=Pattern.compile("^[1-9]{0,9}");
+        Matcher match=pattern.matcher(a.getText());
+        if(match.matches()){
            ResultSet rs= db.DbConnect.s.executeQuery("select * from temp ");
             rs.next();
             String mobile=rs.getString("mobile");
@@ -190,13 +211,16 @@ public class AddAmount extends javax.swing.JFrame {
            int add=Integer.parseInt(a.getText());
            add +=balance;
            db.DbConnect.s.executeUpdate("Update client_info set balance='"+add+"'where mobile="+mobile);
-           
+            JOptionPane.showMessageDialog(null, "Add Money Successfully !");
+        new MainPage().setVisible(true);
+        dispose();
+        }else{
+            JOptionPane.showMessageDialog(null, "Plz Enter limited Amount");
+        }
         } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, ex);
         }
-        JOptionPane.showMessageDialog(null, "Add Money Successfully !");
-        new MainPage().setVisible(true);
-        dispose();
+       
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jMenu3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenu3MouseClicked
@@ -209,6 +233,20 @@ public class AddAmount extends javax.swing.JFrame {
         // TODO add your handling code here:
          
     }//GEN-LAST:event_jMenu3ActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+        // TODO add your handling code here:
+        new Login().setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
+
+    private void aKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_aKeyTyped
+       
+        char amount=evt.getKeyChar();
+
+    if(!(Character.isDigit(amount) ||   amount==KeyEvent.VK_DELETE ))
+        evt.consume();
+    }//GEN-LAST:event_aKeyTyped
 
     /**
      * @param args the command line arguments
@@ -257,6 +295,7 @@ public class AddAmount extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuBar jMenuBar2;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JLabel l;

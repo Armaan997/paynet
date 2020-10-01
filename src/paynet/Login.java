@@ -6,6 +6,7 @@
 
 package paynet;
 
+import java.awt.event.KeyEvent;
 import java.sql.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -108,6 +109,11 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setText("Mobile No :");
 
         m.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                mKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -220,6 +226,15 @@ public class Login extends javax.swing.JFrame {
         // TODO add your handling code here:
         
     }//GEN-LAST:event_pKeyPressed
+
+    private void mKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mKeyTyped
+
+        char amount=evt.getKeyChar();
+
+    if(!(Character.isDigit(amount) ||   amount==KeyEvent.VK_DELETE ))
+        evt.consume();
+            // TODO add your handling code here:
+    }//GEN-LAST:event_mKeyTyped
 
     /**
      * @param args the command line arguments

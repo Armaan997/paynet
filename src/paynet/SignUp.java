@@ -6,6 +6,7 @@
 package paynet;
 
 import static db.DbConnect.s;
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -90,6 +91,11 @@ public class SignUp extends javax.swing.JFrame {
         jLabel4.setText("Mobile No :");
 
         m.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        m.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                mKeyTyped(evt);
+            }
+        });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -253,8 +259,20 @@ public class SignUp extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void nKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nKeyTyped
-        // TODO add your handling code here:
+             char c=evt.getKeyChar();
+
+    if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_SPACE )||  c==KeyEvent.VK_BACK_SPACE))
+        evt.consume();    
     }//GEN-LAST:event_nKeyTyped
+
+    private void mKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_mKeyTyped
+
+        char amount=evt.getKeyChar();
+
+    if(!(Character.isDigit(amount) ||   amount==KeyEvent.VK_DELETE ))
+        evt.consume();
+              // TODO add your handling code here:
+    }//GEN-LAST:event_mKeyTyped
 
     /**
      * @param args the command line arguments

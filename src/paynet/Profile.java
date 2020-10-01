@@ -5,6 +5,7 @@
  */
 package paynet;
 
+import java.awt.event.KeyEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -131,6 +132,11 @@ public class Profile extends javax.swing.JFrame {
         jLabel2.setText("Name :");
 
         name_field.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        name_field.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                name_fieldKeyTyped(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(102, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -213,6 +219,13 @@ public class Profile extends javax.swing.JFrame {
            JOptionPane.showMessageDialog(null,ex);
        }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void name_fieldKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_name_fieldKeyTyped
+       char c=evt.getKeyChar();
+
+    if(!(Character.isAlphabetic(c) ||  (c==KeyEvent.VK_SPACE )||  c==KeyEvent.VK_BACK_SPACE))
+        evt.consume(); 
+    }//GEN-LAST:event_name_fieldKeyTyped
 
     /**
      * @param args the command line arguments
