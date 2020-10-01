@@ -207,7 +207,7 @@ public class TransferMoney extends javax.swing.JFrame {
                if(match.matches()){
                    
                // Amount Check
-                   Pattern pattern1=Pattern.compile( "[1-9]{0,9}");
+                   Pattern pattern1=Pattern.compile( "[0-9]{0,9}");
              Matcher match1=pattern1.matcher(a.getText());
                if(match1.matches()){
                     

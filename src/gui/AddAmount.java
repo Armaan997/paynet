@@ -197,7 +197,7 @@ public class AddAmount extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         try {
             // TODO add your handling code here:
-            Pattern pattern=Pattern.compile("^[1-9]{0,9}");
+            Pattern pattern=Pattern.compile("^[0-9]{0,9}");
         Matcher match=pattern.matcher(a.getText());
         if(match.matches()){
            ResultSet rs= db.DbConnect.s.executeQuery("select * from temp ");
