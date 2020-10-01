@@ -5,6 +5,8 @@
  */
 package paynet;
 
+import static db.DbConnect.s;
+import java.sql.ResultSet;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
@@ -87,13 +89,13 @@ public class SignUp extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Mobile No :");
 
-        m.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        m.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Password :");
 
-        p.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        p.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jButton2.setBackground(new java.awt.Color(102, 153, 255));
         jButton2.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
@@ -115,7 +117,12 @@ public class SignUp extends javax.swing.JFrame {
             }
         });
 
-        n.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        n.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        n.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                nKeyTyped(evt);
+            }
+        });
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
@@ -209,14 +216,18 @@ public class SignUp extends javax.swing.JFrame {
         Matcher match=pattern.matcher(mobile);
         
         
-        
-        
             if(match.matches())
                 {
         double balance=1000;
         if(!name.equals("") && !mobile.equals("") && !password.equals("")){
            
         try{
+            String selectQuery="select * from login where mobile='"+mobile+"'";
+            ResultSet rs=s.executeQuery(selectQuery);
+            if(rs.next()==true){
+                JOptionPane.showMessageDialog(null,"Mobile Number Already Registered");
+            }
+            else{
             db.DbConnect.s.executeUpdate("insert into login (name,mobile,password) values('"+name+"','"+mobile+"','"+password+"')");
            
              db.DbConnect.s.executeUpdate("insert into client_info (name,mobile,balance) values('"+name+"','"+mobile+"','"+balance+"')");
@@ -224,10 +235,11 @@ public class SignUp extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Sign Up Successfully !");
         new Login().setVisible(true);
         dispose();
+            }
         }catch(Exception ex){
             JOptionPane.showMessageDialog(null,ex);
         }
-            
+          
         }
         else{
                 JOptionPane.showMessageDialog(null, "Plz Fill All Field");
@@ -239,6 +251,10 @@ public class SignUp extends javax.swing.JFrame {
 
         
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void nKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_nKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nKeyTyped
 
     /**
      * @param args the command line arguments

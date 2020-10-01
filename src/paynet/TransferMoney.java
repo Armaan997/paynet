@@ -8,6 +8,8 @@ package paynet;
 import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import javax.swing.JOptionPane;
 
 /**
@@ -188,6 +190,16 @@ public class TransferMoney extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
        
         try{
+            
+             Pattern pattern=Pattern.compile("^[7-9][0-9]{9}");
+             Matcher match=pattern.matcher(m.getText());
+               if(match.matches()){
+                   
+               // Amount Check
+                   Pattern pattern1=Pattern.compile( "[+-]?[0-9]+");
+             Matcher match1=pattern1.matcher(a.getText());
+               if(match1.matches()){
+           
             //Transfer money to this mobile
          String mobile=m.getText(); 
          //get Amount
@@ -228,6 +240,14 @@ public class TransferMoney extends javax.swing.JFrame {
             }
             else{
                 JOptionPane.showMessageDialog(null, "There is no efficient Balance");
+            }
+            }
+            else{
+                JOptionPane.showMessageDialog(null, "Invalid Amount ");
+            }
+             }
+            else{
+                JOptionPane.showMessageDialog(null, "Invalid Mobile Number");
             }
           
          

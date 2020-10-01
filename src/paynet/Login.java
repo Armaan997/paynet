@@ -21,6 +21,7 @@ public class Login extends javax.swing.JFrame {
      */
     public Login() {
         initComponents();
+       
     }
 
     /**
@@ -75,7 +76,7 @@ public class Login extends javax.swing.JFrame {
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
 
-        p.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        p.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         p.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 pActionPerformed(evt);
@@ -106,7 +107,7 @@ public class Login extends javax.swing.JFrame {
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Mobile No :");
 
-        m.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        m.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 20)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -177,12 +178,10 @@ public class Login extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
-        
-        String uid=m.getText();
         Pattern pattern=Pattern.compile("^[7-9][0-9]{9}");
-        Matcher match=pattern.matcher(uid);
+        Matcher match=pattern.matcher(m.getText());
         if(match.matches()){
-       
+         String uid=m.getText();
          
         String password=new String(p.getPassword());
       if(!uid.equals("") &&  !password.equals("")){

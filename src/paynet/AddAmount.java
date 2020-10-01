@@ -20,6 +20,7 @@ public class AddAmount extends javax.swing.JFrame {
         initComponents();
     }
 
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -97,6 +98,8 @@ public class AddAmount extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("₹");
+
+        a.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
 
         jButton1.setBackground(new java.awt.Color(102, 153, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N

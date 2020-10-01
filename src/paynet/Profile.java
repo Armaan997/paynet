@@ -22,12 +22,15 @@ public class Profile extends javax.swing.JFrame {
      */
     public Profile() {
         initComponents();
-      
+         
+           
+            
         try {
            ResultSet rs = db.DbConnect.s.executeQuery("select * from temp ");
         
            rs.next();
            String mobile=rs.getString("mobile");
+           
            
             ResultSet r= db.DbConnect.s.executeQuery("select * from client_info where mobile="+mobile);
            r.next();
@@ -38,6 +41,7 @@ public class Profile extends javax.swing.JFrame {
             Logger.getLogger(Profile.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+     
 
     /**
      * This method is called from within the constructor to initialize the form.
