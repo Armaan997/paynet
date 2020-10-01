@@ -54,12 +54,12 @@ public class MainPage extends javax.swing.JFrame{
         jLabel2 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         b = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jButton6 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu5 = new javax.swing.JMenu();
@@ -91,20 +91,6 @@ public class MainPage extends javax.swing.JFrame{
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Balance :");
 
-        jButton3.setText("Add Amount");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
-            }
-        });
-
-        jButton2.setText("History");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-
         b.setBackground(new java.awt.Color(0, 0, 0));
         b.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         b.setForeground(new java.awt.Color(255, 255, 255));
@@ -125,19 +111,13 @@ public class MainPage extends javax.swing.JFrame{
                 .addComponent(jLabel3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(b, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 209, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(24, 24, 24))
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(179, 179, 179)
+                .addGap(187, 187, 187)
                 .addComponent(jButton4)
-                .addContainerGap(207, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addGap(94, 94, 94)
-                .addComponent(jButton2)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButton3)
-                .addGap(110, 110, 110))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -149,13 +129,9 @@ public class MainPage extends javax.swing.JFrame{
                         .addComponent(jLabel2)
                         .addComponent(jLabel1)
                         .addComponent(jLabel3)))
-                .addGap(43, 43, 43)
+                .addGap(85, 85, 85)
                 .addComponent(jButton4)
-                .addGap(36, 36, 36)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
-                .addGap(44, 44, 44))
+                .addGap(63, 63, 63))
         );
 
         jPanel2.setBackground(new java.awt.Color(102, 102, 102));
@@ -167,20 +143,41 @@ public class MainPage extends javax.swing.JFrame{
             }
         });
 
+        jButton2.setText("History");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Add Amount");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(242, 242, 242)
+                .addGap(63, 63, 63)
+                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(87, 87, 87)
                 .addComponent(jButton6)
+                .addGap(84, 84, 84)
+                .addComponent(jButton3)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(60, 60, 60)
-                .addComponent(jButton6)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton6)
+                    .addComponent(jButton2)
+                    .addComponent(jButton3))
                 .addContainerGap(199, Short.MAX_VALUE))
         );
 
@@ -280,37 +277,7 @@ public class MainPage extends javax.swing.JFrame{
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(MainPage.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new MainPage().setVisible(true);
-            }
-        });
-    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel b;
